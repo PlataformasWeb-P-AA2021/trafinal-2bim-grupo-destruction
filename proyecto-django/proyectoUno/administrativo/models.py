@@ -31,7 +31,7 @@ class Edificio(models.Model):
 
 class Departamento(models.Model):
     nombre_propietario = models.CharField(max_length=100)
-    costo = models.DecimalField(max_digits=100, decimal_places=2)
+    costo = models.DecimalField(max_digits=65, decimal_places=2)
     num_cuartos = models.IntegerField()
     edificio = models.ForeignKey(Edificio, on_delete=models.CASCADE,
             related_name="departamentos")
