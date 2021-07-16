@@ -1,7 +1,7 @@
 {% extends "master.html" %}
 
 {% block content %}
-<h2>Editar departamento: </h3>
+<h2>Crear Casa: </h3>
 
 <form action="" method="post">
     {% csrf_token %}
@@ -9,7 +9,7 @@
     {{ formulario.as_p }}
     <div class="row">
         <div class="col-12">
-          <p class="flex-center"><input class="btn btn-primary" type='submit' value='Guardar' /></p>
+          <p class="flex-center"><input class="btn btn-primary" type='submit' value='Agregar' /></p>
         </div>
     </div>
 </form>

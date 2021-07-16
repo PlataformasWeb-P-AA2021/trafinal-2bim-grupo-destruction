@@ -1,0 +1,20 @@
+{% extends "master.html" %}
+
+{% block title %}
+Departamentos
+{% endblock %}
+
+{% block content %}
+
+<h2>Datos acerca del departamento</h2>
+<br>
+
+<p><b>Propietario:  </b>{{departamento.propietario}}</p>
+<p><b>Dirección:    </b>{{departamento.direccion}}</p>
+<p><b>Barrio:       </b>{{departamento.barrio}}</p>
+<p><b>Valor del bien:    </b>{{departamento.valor}}</p>
+<p><b>Número de cuartos: </b>{{departamento.num_cuartos}}</p>
+<p><b>Valor mensual de mantenimiento.: </b>{{departamento.costo_mensual}}</p>
+
+<br/>
+{% endblock %}

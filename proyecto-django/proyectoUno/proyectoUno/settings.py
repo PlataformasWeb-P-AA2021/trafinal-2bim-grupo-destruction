@@ -39,28 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # agregar apps para Auth - paso 1
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.github',
     #
     'administrativo',
-
     'rest_framework',
-    # 'corsheaders',
 ]
 
-# agregar apps para Auth - paso 2
-AUTHENTICATION_BACKENDS = (
-    "django.contrib.auth.backends.ModelBackend",
-    "allauth.account.auth_backends.AuthenticationBackend",
-)
-
-
-# agregar apps para Auth - paso 3
-ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -100,7 +83,7 @@ WSGI_APPLICATION = 'proyectoUno.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'prueba',
+        'NAME': 'django',
         'USER': 'root',
         'PASSWORD': 'admin',
         'HOST': 'localhost',
@@ -151,12 +134,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
-# LOGOUT_REDIRECT_URL = '/' # new
-
-# agregar apps para Auth - paso 4
-LOGIN_REDIRECT_URL = reverse_lazy('index')
 
 # agregar información para
 REST_FRAMEWORK = {

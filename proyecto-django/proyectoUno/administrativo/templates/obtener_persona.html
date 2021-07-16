@@ -1,0 +1,17 @@
+{% extends "master.html" %}
+
+{% block title %}
+Personas
+{% endblock %}
+
+{% block content %}
+
+<h2>Datos acerca de la persona</h2>
+<br>
+<p><b>Nombres: </b>{{persona.nombres}}</p>
+<p><b>Apellidos: </b>{{persona.apellidos}}</p>
+<p><b>Cédula: </b>{{persona.cedula}}</p>
+<p><b>Correo: </b>{{persona.correo}}</p>
+
+<br/>
+{% endblock %}

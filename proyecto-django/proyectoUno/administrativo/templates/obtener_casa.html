@@ -1,0 +1,20 @@
+{% extends "master.html" %}
+
+{% block title %}
+Casas
+{% endblock %}
+
+{% block content %}
+
+<h2>Datos acerca de la casa</h2>
+<br>
+<p><b>Propietario: </b>{{casa.propietario}}</p>
+<p><b>Dirección: </b>{{casa.direccion}}</p>
+<p><b>Barrio: </b>{{casa.barrio}}</p>
+<p><b>Valor del bien: </b>{{casa.valor}}</p>
+<p><b>Color de inmueble: </b>{{casa.color}}</p>
+<p><b>Número de cuartos: </b>{{casa.num_cuartos}}</p>
+<p><b>Número de pisos: </b>{{casa.num_pisos}}</p>
+
+<br/>
+{% endblock %}
