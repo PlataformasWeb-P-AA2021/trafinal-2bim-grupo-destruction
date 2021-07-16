@@ -1,18 +1,29 @@
 from django.contrib import admin
 
 # Importar las clases del modelo
-from administrativo.models import Edificio, Departamento
+from administrativo.models import Persona, Barrio, Casa, Departamento
 
-class EdificioAdmin(admin.ModelAdmin):
+class PersonaAdmin(admin.ModelAdmin):
 
-    list_display = ('nombre', 'direccion', 'ciudad', 'tipo')
-    search_fields = ('nombre', 'direccion')
+    list_display = ('nombres', 'apellidos', 'cedula', 'correo')
+    search_fields = ('nombres', 'cedula')
 
-admin.site.register(Edificio, EdificioAdmin)
+admin.site.register(Persona, PersonaAdmin)
+
+class BarrioAdmin(admin.ModelAdmin):
+
+    list_display = ('nombres', 'siglas')
+
+admin.site.register(Barrio, BarrioAdmin)
+
+class CasaAdmin(admin.ModelAdmin):
+
+    list_display = ('propietario', 'barrio', 'direccion', 'valor', 'color', 'num_cuartos', 'num_pisos')
+
+admin.site.register(Casa, CasaAdmin)
 
 class DepartamentoAdmin(admin.ModelAdmin):
 
-    list_display = ('nombre_propietario', 'costo', 'num_cuartos', 'edificio')
-    raw_id_fields = ('edificio',)
+    list_display = ('propietario', 'barrio', 'direccion', 'valor', 'num_cuartos', 'costo_mensual')
 
 admin.site.register(Departamento, DepartamentoAdmin)

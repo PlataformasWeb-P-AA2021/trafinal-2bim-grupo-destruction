@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User, Group
-from administrativo.models import Edificio, Departamento
+from administrativo.models import Persona, Barrio, Casa, Departamento
 
 from rest_framework import serializers
 
@@ -16,14 +16,24 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['url', 'name']
 
 
-class EdificioSerializer(serializers.HyperlinkedModelSerializer):
+class PersonaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Edificio
+        model = Persona
+        fields = '__all__'
+
+
+class BarrioSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Barrio
+        fields = '__all__'
+
+class CasaSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Casa
         fields = '__all__'
 
 
 class DepartamentoSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Departamento
-        # fields = ['id', 'telefono', 'tipo']
         fields = '__all__'

@@ -12,7 +12,7 @@ from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from rest_framework import permissions
 from administrativo.serializers import UserSerializer, GroupSerializer, \
-EdificioSerializer, DepartamentoSerializer
+PersonaSerializer, BarrioSerializer, CasaSerializer, DepartamentoSerializer
 
 # importar las clases de models.py
 from administrativo.models import *

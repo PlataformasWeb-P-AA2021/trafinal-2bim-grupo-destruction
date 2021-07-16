@@ -1,40 +1,52 @@
 from django.db import models
 
 # Create your models here.
-class Edificio(models.Model):
-    opciones_edifico = (
-        ('residencial', 'Residencial'),
-        ('rural', 'Rural')
-    )
+class Persona(models.Model):
 
-    nombre = models.CharField(max_length=30)
-    direccion = models.CharField(max_length=30)
-    ciudad = models.CharField(max_length=30)
-    tipo = models.CharField(max_length=30, \
-            choices=opciones_edifico) 
+    nombres = models.CharField(max_length=30)
+    apellidos = models.CharField(max_length=30)
+    cedula = models.CharField(max_length=30)
+    correo = models.CharField(max_length=30)
 
     def __str__(self):
-        return "%s - %s - %s - %s" % (self.nombre,
-                self.direccion,
-                self.ciudad,
-                self.tipo)
+        return "%s - %s - %s" % (self.nombres, self.apellidos, self.cedula)
 
-    def obtener_costo_departamentos(self):
-        valor = [d.costo for d in self.departamentos.all()]
-        valor = sum(valor)
-        return valor
-    
-    def obtener_total_cuartos(self):
-        valor = [d.num_cuartos for d in self.departamentos.all()]
-        valor = sum(valor)
-        return valor
+class Barrio(models.Model):
+
+    nombres = models.CharField(max_length=30)
+    siglas = models.CharField(max_length=30)
+
+    def __str__(self):
+        return "%s - %s" % (self.nombres, self.siglas)
+
+class Casa(models.Model):
+
+    propietario = models.ForeignKey(Persona, on_delete=models.CASCADE,
+            related_name="casas")
+    direccion = models.CharField(max_length=30)
+    barrio = models.ForeignKey(Barrio, on_delete=models.CASCADE,
+            related_name="casas")
+    valor = models.IntegerField()
+    color = models.CharField(max_length=30)
+    num_cuartos = models.IntegerField()
+    num_pisos = models.IntegerField()
+
+    def __str__(self):
+        return "%s - %s - %s - %s - %s - %s - %s" % (self.propietario, \
+        self.direccion, self.barrio, self.valor, self.color ,self.num_cuartos, \
+        self.num_pisos)
 
 class Departamento(models.Model):
-    nombre_propietario = models.CharField(max_length=100)
-    costo = models.DecimalField(max_digits=65, decimal_places=2)
-    num_cuartos = models.IntegerField()
-    edificio = models.ForeignKey(Edificio, on_delete=models.CASCADE,
+    propietario = models.ForeignKey(Persona, on_delete=models.CASCADE,
             related_name="departamentos")
+    direccion = models.CharField(max_length=30)
+    barrio = models.ForeignKey(Barrio, on_delete=models.CASCADE,
+            related_name="casas")
+    valor = models.IntegerField()
+    num_cuartos = models.IntegerField()
+    costo_mensual = models.DecimalField(max_digits=65, decimal_places=2)
 
     def __str__(self):
-        return "%s - %s - %s" % (self.nombre_propietario, self.costo, self.num_cuartos)
+        return "%s - %s - %s - %s - %s - %s" % (self.propietario, \
+        self.direccion, self.barrio, self.valor ,self.num_cuartos, \
+        self.costo_mensual)
