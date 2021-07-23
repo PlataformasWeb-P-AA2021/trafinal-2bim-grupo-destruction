@@ -32,9 +32,7 @@ Listado de casas y departamentos
             <th>Color de inmueble</th>
             <th>Número de cuartos</th>
             <th>Número de pisos</th>
-            {% if user.is_authenticated %}
             <th>Opciones</th>
-            {% endif %}
             </tr>
         </thead>
 
@@ -48,17 +46,18 @@ Listado de casas y departamentos
             <td> {{c.color}}</td>
             <td> {{c.num_cuartos}}</td>
             <td> {{c.num_pisos}}</td>
-            {% if user.is_authenticated %}
             <td>
                 <div class="opciones">
                 <a href="{% url 'obtener_casa' c.id %}"><i class="far fa-eye"></i></a>
+                {% if user.is_authenticated %}
                 <a href="{% url 'editar_casa' c.id %}"><i class="far fa-edit"></i></a>
                 <a href="{% url 'eliminar_casa' c.id %}"
                     onclick="return confirm('¿Está seguro de la eliminación?')">
                     <i class="fas fa-trash"></i></a>
+                {% endif %}
                 </div>
             </td>
-            {% endif %}
+            
             </tr>
         </tbody>
 
@@ -86,9 +85,7 @@ Listado de casas y departamentos
             <th>Valor de bien</th>
             <th>Número de cuartos</th>
             <th>Costo mensual</th>
-            {% if user.is_authenticated %}
             <th>Opciones</th>
-            {% endif %}
             </tr>
         </thead>
 
@@ -101,17 +98,17 @@ Listado de casas y departamentos
             <td> {{d.valor}}</td>
             <td> {{d.num_cuartos}}</td>
             <td> {{d.costo_mensual}}</td>
-            {% if user.is_authenticated %}
             <td>
                 <div class="opciones">
                 <a href="{% url 'obtener_departamento' d.id %}"><i class="far fa-eye"></i></a>
+                {% if user.is_authenticated %}
                 <a href="{% url 'editar_departamento' d.id %}"><i class="far fa-edit"></i></a>
                 <a href="{% url 'eliminar_departamento' d.id %}"
                     onclick="return confirm('¿Está seguro de la eliminación?')">
                     <i class="fas fa-trash"></i></a>
+                {% endif %}
                 </div>
             </td>
-            {% endif %}
             </tr>
         </tbody>
 

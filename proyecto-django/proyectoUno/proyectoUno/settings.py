@@ -16,6 +16,8 @@ from django.urls import reverse_lazy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 
 
 # Quick-start development settings - unsuitable for production
@@ -27,7 +29,7 @@ SECRET_KEY = '^wfd@g&ux1c90)a095ba1evi$7dez*^klty@5ze(wdsh-%84!@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["0.0.0.0", "127.0.0.1"]
 
 
 # Application definition
@@ -100,7 +102,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'django',
-        'USER': 'root',
+        'USER': 'dbUser',
         'PASSWORD': 'admin',
         'HOST': 'localhost',
         'PORT': 3306,
@@ -147,7 +149,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/home/ian/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

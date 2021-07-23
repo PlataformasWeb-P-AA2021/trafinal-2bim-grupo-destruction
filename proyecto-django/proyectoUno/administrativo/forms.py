@@ -30,6 +30,12 @@ class CasaForm(ModelForm):
     class Meta:
         model = Casa
         fields = '__all__'
+        labels = {
+            'num_cuartos': _('Número de cuartos'),
+            'num_pisos': _('Número de pisos'),
+            'valor': _('Valor de bien'),
+            'color': _('Color de inmueble'),
+        }
 
     # Agregar clases de Bootstrap en el formulario.
     def __init__(self, *args, **kwargs):
@@ -41,6 +47,10 @@ class DepartamentoForm(ModelForm):
     class Meta:
         model = Departamento
         fields = '__all__'
+        labels = {
+            'num_cuartos': _('Número de cuartos'),
+            'valor': _('Valor de bien'),
+        }
 
     # Agregar clases de Bootstrap en el formulario.
     def __init__(self, *args, **kwargs):

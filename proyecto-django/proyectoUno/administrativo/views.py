@@ -182,7 +182,7 @@ def crear_departamento(request):
 
 @login_required(login_url='/entrando/login/')
 
-@permission_required('administrativo.edit_departamento', login_url="/entrando/login/")
+@permission_required('administrativo.change_departamento', login_url="/entrando/login/")
 def editar_departamento(request, id):
 
     departamento = Departamento.objects.get(pk=id)
@@ -232,7 +232,7 @@ def crear_casa(request):
 
 @login_required(login_url='/entrando/login/')
 
-@permission_required('administrativo.edit_casa', login_url="/entrando/login/")
+@permission_required('administrativo.change_casa', login_url="/entrando/login/")
 def editar_casa(request, id):
     """
     """
