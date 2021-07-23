@@ -110,7 +110,7 @@ footer{
 }
 
 #sidebar-container .menu{
-  width: 18rem;
+  width: 15rem;
 }
 
 #sidebar-container a{
@@ -124,10 +124,6 @@ footer{
 /*
 ICONOS
 */
-td .fa-plus{
-  padding-left: 15px;
-  color: green;
-}
 span .fa-edit{
   padding: 0;
 }

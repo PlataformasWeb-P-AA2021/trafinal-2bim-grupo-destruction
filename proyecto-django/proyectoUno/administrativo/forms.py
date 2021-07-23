@@ -47,17 +47,3 @@ class DepartamentoForm(ModelForm):
         super(DepartamentoForm, self).__init__(*args, **kwargs)
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control'
-
-# class DepartamentoEdificioForm(ModelForm):
-
-#     def __init__(self, edificio, *args, **kwargs):
-#         super(DepartamentoEdificioForm, self).__init__(*args, **kwargs)
-#         self.initial['edificio'] = edificio
-#         self.fields["edificio"].widget = forms.widgets.HiddenInput()
-#         for visible in self.visible_fields():
-#             visible.field.widget.attrs['class'] = 'form-control'
-
-#     class Meta:
-#         model = Departamento
-#         fields = ['nombre_propietario', 'costo', 'num_cuartos', 'edificio']
-

@@ -16,7 +16,11 @@ Listado de casas y departamentos
     <!-- Listado de casas -->
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
         <h3>Número total de casas: {{ numero_casas }}</h3>
-        <br>
+        
+        {% if user.is_authenticated %}
+          <a href="{% url 'crear_casa' %}"><input class="btn btn-primary" value='Agregar'/></a>
+        {% endif %}
+
         <table class="table table-bordered" id="tabla_casas">
 
         <thead>
@@ -28,7 +32,9 @@ Listado de casas y departamentos
             <th>Color de inmueble</th>
             <th>Número de cuartos</th>
             <th>Número de pisos</th>
+            {% if user.is_authenticated %}
             <th>Opciones</th>
+            {% endif %}
             </tr>
         </thead>
 
@@ -42,6 +48,7 @@ Listado de casas y departamentos
             <td> {{c.color}}</td>
             <td> {{c.num_cuartos}}</td>
             <td> {{c.num_pisos}}</td>
+            {% if user.is_authenticated %}
             <td>
                 <div class="opciones">
                 <a href="{% url 'obtener_casa' c.id %}"><i class="far fa-eye"></i></a>
@@ -51,6 +58,7 @@ Listado de casas y departamentos
                     <i class="fas fa-trash"></i></a>
                 </div>
             </td>
+            {% endif %}
             </tr>
         </tbody>
 
@@ -63,7 +71,11 @@ Listado de casas y departamentos
     <!-- Listado de departamentos -->
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <h3>Número total de departamentos: {{ numero_departamentos }}</h3>
-        <br>
+        
+        {% if user.is_authenticated %}
+          <a href="{% url 'crear_departamento' %}"><input class="btn btn-primary" value='Agregar'/></a>
+        {% endif %}
+        
         <table class="table table-bordered" id="tabla_departamentos">
 
         <thead>
@@ -74,7 +86,9 @@ Listado de casas y departamentos
             <th>Valor de bien</th>
             <th>Número de cuartos</th>
             <th>Costo mensual</th>
+            {% if user.is_authenticated %}
             <th>Opciones</th>
+            {% endif %}
             </tr>
         </thead>
 
@@ -87,6 +101,7 @@ Listado de casas y departamentos
             <td> {{d.valor}}</td>
             <td> {{d.num_cuartos}}</td>
             <td> {{d.costo_mensual}}</td>
+            {% if user.is_authenticated %}
             <td>
                 <div class="opciones">
                 <a href="{% url 'obtener_departamento' d.id %}"><i class="far fa-eye"></i></a>
@@ -96,6 +111,7 @@ Listado de casas y departamentos
                     <i class="fas fa-trash"></i></a>
                 </div>
             </td>
+            {% endif %}
             </tr>
         </tbody>
 
@@ -107,7 +123,25 @@ Listado de casas y departamentos
 
 <script type="text/javascript">
     $(document).ready(function () {
-      $('#tabla_casas').DataTable();
+      $('#tabla_casas').DataTable({
+            columnDefs: [{
+            width: "250px",
+            targets: 0
+            },
+            {
+            width: "100px",
+            targets: 1
+            },
+            {
+            width: "100px",
+            targets: 2
+            },
+            {
+            width: "90px",
+            targets: 7
+            }
+        ]
+      });
       $('#tabla_departamentos').DataTable();
     });
 </script>

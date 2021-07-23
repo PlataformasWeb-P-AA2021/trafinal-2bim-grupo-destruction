@@ -31,10 +31,29 @@
         <div class="d-block p-4">
           <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo">
         </div>
+        <div class="">
+        {% if messages %}
+          <div class="messages">
+            {% for message in messages %}
+            <span{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+        </div>
         <div class="menu">
+          {% if user.is_authenticated %}
+          <span class="nombre_usuario"> Bienvenido: {{user.username}} </span>
+          {% endif %}
           <a class="d-block p-4" href="{% url 'index' %}"><i class="fas fa-home mr-2"></i>Inicio</a>
-          <a class="d-block p-4" href="{% url 'crear_casa' %}"><i class="fas fa-plus mr-2"></i>Agregar casa</a>
-          <a class="d-block p-4" href="{% url 'crear_departamento' %}"><i class="fas fa-plus mr-2"></i>Agregar departamento</a>
+          <br>
+          <a class="d-block p-4" href="{% url 'personas' %}"><i class="fas fa-user-friends"></i> Personas</a>
+          <a class="d-block p-4" href="{% url 'barrios' %}"><i class="fas fa-city"></i> Barrios</a>
+          <br>
+          {% if user.is_authenticated %}
+          <a class="d-block p-4" href="{% url 'logout_view' %}"><i class="fas fa-sign-out-alt"></i> Salir</a>
+          {% else %}
+          <a class="d-block p-4" href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Ingresar</a>
+          {% endif %}
         </div>
       </div>
       <section class="w-100">

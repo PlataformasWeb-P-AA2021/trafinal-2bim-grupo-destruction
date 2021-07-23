@@ -1,11 +1,11 @@
 {% extends "master.html" %}
 
 {% block title %}
-Crear departamento
+Crear barrio
 {% endblock %}
 
 {% block content %}
-<h2>Crear Departamento: </h3>
+<h2>Crear Barrio: </h3>
 
 <form action="" method="post">
     {% csrf_token %}
@@ -13,7 +13,7 @@ Crear departamento
     {{ formulario.as_p }}
     <div class="row">
         <div class="col-12">
-          <p class="flex-center"><input class="btn btn-primary" type='submit' value='Guardar' /></p>
+          <p class="flex-center"><input class="btn btn-primary" type='submit' value='Agregar' /></p>
         </div>
     </div>
 </form>

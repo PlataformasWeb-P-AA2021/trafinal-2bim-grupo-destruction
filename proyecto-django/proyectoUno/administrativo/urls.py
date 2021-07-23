@@ -9,6 +9,9 @@ from . import views
 
 urlpatterns = [
         path('', views.index, name='index'),
+        path('personas', views.persona, name='personas'),
+        path('barrios', views.barrio, name='barrios'),
+        
         # Paths del modelo Persona
         path('persona/<int:id>', views.obtener_persona, 
             name='obtener_persona'),
@@ -18,6 +21,7 @@ urlpatterns = [
             name='editar_persona'),
         path('eliminar/persona/<int:id>', views.eliminar_persona, 
             name='eliminar_persona'),
+
         # Paths del modelo Barrio
         path('barrio/<int:id>', views.obtener_barrio, 
             name='obtener_barrio'),
@@ -27,6 +31,7 @@ urlpatterns = [
             name='editar_barrio'),
         path('eliminar/barrio/<int:id>', views.eliminar_barrio, 
             name='eliminar_barrio'),
+
         # Paths del modelo Departamento
         path('departamento/<int:id>', views.obtener_departamento, 
             name='obtener_departamento'),
@@ -36,6 +41,7 @@ urlpatterns = [
             name='editar_departamento'),
         path('eliminar/departamento/<int:id>', views.eliminar_departamento, 
             name='eliminar_departamento'),
+
         # Paths del modelo Casa
         path('casa/<int:id>', views.obtener_casa, 
             name='obtener_casa'),
@@ -45,7 +51,8 @@ urlpatterns = [
             name='editar_casa'),
         path('eliminar/casa/<int:id>', views.eliminar_casa, 
             name='eliminar_casa'),
-        # path('crear/departamento/edificio/<int:id>', 
-        #     views.crear_departamento_edificio, 
-        #     name='crear_departamento_edificio'),
+
+        # auth
+        path('saliendo/logout/', views.logout_view, name="logout_view"),
+        path('entrando/login/', views.ingreso, name="login"),
  ]

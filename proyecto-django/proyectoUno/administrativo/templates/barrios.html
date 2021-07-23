@@ -1,0 +1,53 @@
+{% extends "master.html" %}
+{% block title %}
+Listado de barrios
+{% endblock %}
+
+{% block content %}
+<div class="tab-content" id="myTabContent">
+    <!-- Listado de barrios -->
+    <div>
+        <h3>Número total de barrios: {{ numero_barrios }}</h3>
+  
+        <a href="{% url 'crear_barrio' %}"><input class="btn btn-primary" value='Agregar'/></a>
+
+        <table class="table table-bordered" id="tabla_barrios">
+
+        <thead>
+            <tr>
+            <th>Nombre del barrio</th>
+            <th>Siglas</th>
+            <th>Opciones</th>
+            </tr>
+        </thead>
+
+        {% for b in barrios %}
+        <tbody>
+            <tr>
+            <td> {{b.nombres}}</td>
+            <td> {{b.siglas}}</td>
+            <td>
+                <div class="opciones">
+                <a href="{% url 'obtener_barrio' b.id %}"><i class="far fa-eye"></i></a>
+                <a href="{% url 'editar_barrio' b.id %}"><i class="far fa-edit"></i></a>
+                <a href="{% url 'eliminar_barrio' b.id %}"
+                    onclick="return confirm('¿Está seguro de la eliminación?')">
+                    <i class="fas fa-trash"></i></a>
+                </div>
+            </td>
+            </tr>
+        </tbody>
+
+        {% endfor %}
+        </table>
+        <br>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+      $('#tabla_barrios').DataTable();
+    });
+</script>
+{% endblock %}
